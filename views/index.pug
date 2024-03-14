@@ -6,17 +6,19 @@ block content
     .row.my-3
       .col-md-12.text-center
         label(for="taskName" class='fs-5 mb-2') Product Management System
-        input.form-control.form-control-lg(type="text", name='taskName', placeholder="Enter the new Product Name here" )
-        input.form-control.form-control-lg(type="text", name='pID', placeholder="Enter the Product ID here" )
-        input.form-control.form-control-lg(type="text", name='description', placeholder="Enter Product details here" )
-        input.form-control.form-control-lg(type="text", name='price', placeholder="Enter the Product price here" )
-        input.form-control.form-control-lg(type="text", name='catagory', placeholder="Enter Product catagory here" )
+        input.form-control.form-control-lg(type="text", name='taskName', placeholder="Enter the new Product Name " )
+        input.form-control.form-control-lg(type="text", name='pID', placeholder="Enter Product ID " )
+        input.form-control.form-control-lg(type="text", name='description', placeholder="Enter Product description" )
+        input.form-control.form-control-lg(type="text", name='price', placeholder="Enter product price" )
+        input.form-control.form-control-lg(type="text", name='catagory', placeholder="Enter Product Availability" )
         //button.btn.btn-success.btn-lg.mt-3(type='submit') Add Product
         button.btn.btn-primary.btn-lg.mt-3(type='submit') Add Product
 
 
   //- Listing all Products
-  h5(class='my-4 text-center') All Products
+  //h5(class='my-4 text-center') List of All Products 
+  h5(class='my-4 text-center', style='color: green;') List of All Products
+
 
   .table-responsive
     table.table.table-striped.table-hover
@@ -24,17 +26,17 @@ block content
         tr
           th(class='fw-bold') Product ID
           th(class='fw-bold') Product
-          th(class='fw-bold') Added On
+          //th(class='fw-bold') Added On
           th(class='fw-bold') Price 
           th(class='fw-bold') Description
-          th(class='fw-bold') Catagory
+          th(class='fw-bold') Availability
           th(class='fw-bold') -
       tbody
         each task in currentTasks
           tr
             td #{task.pID}
             td #{task.taskName}
-            td #{format(task.createDate, "yyyy-MM-dd HH:mm:ss")}
+            //td #{format(task.createDate, "yyyy-MM-dd HH:mm:ss")}
             td #{task.price}
             td #{task.description}
             td #{task.catagory}
@@ -42,4 +44,4 @@ block content
               form(action='./deleteTask' method='POST' class='form-registration')
                 input(type='hidden' name='_id' value=task._id)
                 //button.btn.btn-danger.btn-sm(type='submit') Remove
-                button.btn.btn-primary.btn-sm(type='submit') Remove Entry
+                button.btn.btn-primary.btn-sm(type='submit') Delete
