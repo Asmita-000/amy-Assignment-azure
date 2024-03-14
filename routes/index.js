@@ -1,14 +1,17 @@
 var express = require('express');
-var Product = require('../models/product'); // Import the Product model
+var Task = require('../models/task');
 
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  Product.find()
-    .then((products) => {      
-      console.log(`Total products: ${products.length}`);
-      res.render('index', { currentProducts: products }); // Pass products directly to the view
+  Task.find()
+    .then((tasks) => {      
+      const currentTasks = tasks.filter(task => !task.completed);
+      const completedTasks = tasks.filter(task => task.completed === true);
+
+      console.log('Total tasks: ${tasks.length}   Current tasks: ${currentTasks.length}    Completed tasks:  ${completedTasks.length}')
+      res.render('index', { currentTasks: currentTasks, completedTasks: completedTasks });
     })
     .catch((err) => {
       console.log(err);
@@ -17,23 +20,27 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/addProduct', function(req, res, next) {
-  const productName = req.body.productName;
-  const description = req.body.description; // Get description from the request body
-  const price = req.body.price; // Get price from the request body
+router.post('/addTask', function(req, res, next) {
+  const taskName = req.body.taskName;
   const createDate = Date.now();
+  const price = req.body.price;
+  const description = req.body.description;
+  const catagory = req.body.catagory;
+  const pID = req.body.pID;
   
-  var product = new Product({
-    productName: productName,
-    description: description, // Add description field to the new product
-    price: price, // Add price field to the new product
-    createDate: createDate
+  var task = new Task({
+    taskName: taskName,
+    createDate: createDate,
+    pID: pID,
+    description: description,
+    catagory: catagory,
+    price: price
   });
-  console.log(`Adding a new product ${productName} - createDate ${createDate}`);
+  console.log('Adding a new task ${taskName} - createDate ${createDate}')
 
-  product.save()
+  task.save()
       .then(() => { 
-        console.log(`Added new product ${productName} - createDate ${createDate}`);        
+        console.log('Added new task ${taskName} - createDate ${createDate}')        
         res.redirect('/'); })
       .catch((err) => {
           console.log(err);
@@ -41,11 +48,28 @@ router.post('/addProduct', function(req, res, next) {
       });
 });
 
-router.post('/deleteProduct', function(req, res, next) {
-  const productId = req.body._id;
-  Product.findByIdAndDelete(productId)
+router.post('/completeTask', function(req, res, next) {
+  console.log("I am in the PUT method")
+  const taskId = req.body._id;
+  const completedDate = Date.now();
+
+  Task.findByIdAndUpdate(taskId, { completed: true, completedDate: Date.now()})
     .then(() => { 
-      console.log(`Deleted product ${productId}`);      
+      console.log('Completed task ${taskId}')
+      res.redirect('/'); }  )
+    .catch((err) => {
+      console.log(err);
+      res.send('Sorry! Something went wrong.');
+    });
+});
+
+
+router.post('/deleteTask', function(req, res, next) {
+  const taskId = req.body._id;
+  const completedDate = Date.now();
+  Task.findByIdAndDelete(taskId)
+    .then(() => { 
+      console.log('Deleted task $(taskId)')      
       res.redirect('/'); }  )
     .catch((err) => {
       console.log(err);

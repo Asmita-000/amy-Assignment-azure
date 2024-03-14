@@ -1,36 +1,45 @@
 extends layout
 
 block content
+  //- Form for Adding Products
+  form(action='./addTask' method='POST' class='form-registration')
+    .row.my-3
+      .col-md-12.text-center
+        label(for="taskName" class='fs-5 mb-2') Product Management System
+        input.form-control.form-control-lg(type="text", name='taskName', placeholder="Enter the new Product Name here" )
+        input.form-control.form-control-lg(type="text", name='pID', placeholder="Enter the Product ID here" )
+        input.form-control.form-control-lg(type="text", name='description', placeholder="Enter Product details here" )
+        input.form-control.form-control-lg(type="text", name='price', placeholder="Enter the Product price here" )
+        input.form-control.form-control-lg(type="text", name='catagory', placeholder="Enter Product catagory here" )
+        //button.btn.btn-success.btn-lg.mt-3(type='submit') Add Product
+        button.btn.btn-primary.btn-lg.mt-3(type='submit') Add Product
 
-  form(action='./addProduct' method='POST' class='form-registration') // Changed action to addProduct
-    div(class='row my-3')
-      div(class='col-md-2 align-bottom')
-        label(for="productName" class='fs-5') New Product // Changed label text to New Product
-      div(class='col-md-3')
-        input(class="form-control form-control-sm" type="text" name='productName', placeholder="Enter new product name here" ) // Changed name attribute to productName
-      div(class='col-md-2')
-        input(class="form-control form-control-sm" type="text" name='description', placeholder="Enter product description" ) // Added input for description
-      div(class='col-md-2')
-        input(class="form-control form-control-sm" type="text" name='price', placeholder="Enter product price: " ) // Added input for price
-      div(class='col-md-2 text-end')
-        button(class='btn btn-success btn-sm' type='submit') Add Product // Changed button text to Add Product
 
-  h5(class='my-2') Current Products
+  //- Listing all Products
+  h5(class='my-4 text-center') All Products
 
-  div(class='row mb-3 border-bottom border-3')
-    div(class='col-md-3 fw-bold') Product Name // Added column for Product Name
-    div(class='col-md-3 fw-bold') Description // Added column for Description
-    div(class='col-md-2 fw-bold') Price // Added column for Price
-    div(class='col-md-2 fw-bold') Added
-    div(class='col-md-2 fw-bold') Action
-
-  each product in currentProducts
-    div(class='row mb-2')
-      div(class='col-md-3') #{product.productName} // Display Product Name
-      div(class='col-md-3') #{product.description} // Display Description
-      div(class='col-md-2') #{product.price} // Display Price
-      div(class='col-md-2') #{format(product.createDate, "yyyy-MM-dd")}
-      div(class='col-md-2')
-        form(action='./deleteProduct' method='POST' class='form-registration') // Changed action to deleteProduct
-          input(type='hidden' name='_id' value=`${product._id}`)
-          button(class='btn btn-danger btn-sm mx-1') Delete // Changed button color to red
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th(class='fw-bold') Product ID
+          th(class='fw-bold') Product
+          th(class='fw-bold') Added On
+          th(class='fw-bold') Price 
+          th(class='fw-bold') Description
+          th(class='fw-bold') Catagory
+          th(class='fw-bold') -
+      tbody
+        each task in currentTasks
+          tr
+            td #{task.pID}
+            td #{task.taskName}
+            td #{format(task.createDate, "yyyy-MM-dd HH:mm:ss")}
+            td #{task.price}
+            td #{task.description}
+            td #{task.catagory}
+            td
+              form(action='./deleteTask' method='POST' class='form-registration')
+                input(type='hidden' name='_id' value=task._id)
+                //button.btn.btn-danger.btn-sm(type='submit') Remove
+                button.btn.btn-primary.btn-sm(type='submit') Remove Entry

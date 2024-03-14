@@ -1,24 +1,29 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
-  productName: {
+const taskSchema = new mongoose.Schema({
+  taskName: {
     type: String,
     trim: true,
-    required: true // Ensuring productName is required for a product
   },
   description: {
     type: String,
-    trim: true
+    trim: true,
   },
+  catagory: {
+    type: String,
+    trim: true,
+  },
+  createDate: Date,
+  completedDate: Date,
+  completed: Boolean,
   price: {
-    type: Number,
-    required: true // Ensuring price is required for a product
+    type: String,
+    trim: true,
   },
-  createDate: {
-    type: Date,
-    default: Date.now // Setting a default value to the current date for createDate
-  },
-  // Assuming there might be additional fields specific to a product, you can add them here
+  pID: {
+    type: String,
+    trim: true,
+  }
 });
 
-module.exports = mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Task', taskSchema);
