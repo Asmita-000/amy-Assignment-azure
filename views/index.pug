@@ -37,7 +37,7 @@ block content
           //th(class='fw-bold') Added On
           th(class='fw-bold') Price 
           th(class='fw-bold') Description
-          th(class='fw-bold') Availability
+          //th(class='fw-bold') Availability
           th(class='fw-bold') Action
       tbody
         each task in currentTasks
@@ -47,7 +47,7 @@ block content
             //td #{format(task.createDate, "yyyy-MM-dd HH:mm:ss")}
             td #{task.price}
             td #{task.description}
-            td #{task.category}
+            //td #{task.category}
             td
               form(action='./deleteTask' method='POST' class='form-registration')
                 input(type='hidden' name='_id' value=task._id)
