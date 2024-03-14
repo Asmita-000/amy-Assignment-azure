@@ -21,7 +21,7 @@ block content
             input.form-control(type="text", name='price', placeholder="Enter product price" )
           .form-group
             label(for="category" class='fw-bold text-secondary') Category
-            input.form-control(type="text", name='category', placeholder="Enter Product Category" )
+            input.form-control(type="text", name='category', placeholder="Enter Product Availability" )
           .text-center
             button.btn.btn-primary.btn-block.btn-lg.mt-3(type='submit') Add Product
 
@@ -50,7 +50,7 @@ block content
             //td #{format(task.createDate, "yyyy-MM-dd HH:mm:ss")}
             td #{task.price}
             td #{task.description}
-            td #{task.catagory}
+            td #{task.category}
             td
               form(action='./deleteTask' method='POST' class='form-registration')
                 input(type='hidden' name='_id' value=task._id)
