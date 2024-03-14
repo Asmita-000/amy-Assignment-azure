@@ -1,13 +1,29 @@
 const mongoose = require('mongoose');
 
-const taskSchema = new mongoose.Schema({
-  taskName: {
+const productSchema = new mongoose.Schema({
+  name: {
     type: String,
     trim: true,
+    required: true
   },
-  createDate: Date,
-  completedDate: Date,
-  completed: Boolean
+  description: {
+    type: String,
+    trim: true
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  stockQuantity: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-module.exports = mongoose.model('Task', taskSchema);
+module.exports = mongoose.model('Product', productSchema);
