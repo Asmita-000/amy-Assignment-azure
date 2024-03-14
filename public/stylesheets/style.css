@@ -45,15 +45,16 @@ label {
 .btn {
   display: inline-block;
   padding: 10px 24px;
-  background-color: #009688;
+  background-color: #ff6f61; /* Changed button color to red */
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
   transition: background-color 0.3s;
+  border: none; /* Removed border */
 }
 
 .btn:hover {
-  background-color: #00796b;
+  background-color: #e0483e; /* Darker red on hover */
 }
 
 .table {
