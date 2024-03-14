@@ -7,11 +7,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   Product.find()
     .then((products) => {      
-      // Assuming completed field doesn't exist for products
-      const currentProducts = products;
-
       console.log(`Total products: ${products.length}`);
-      res.render('index', { currentProducts: currentProducts });
+      res.render('index', { currentProducts: products }); // Pass products directly to the view
     })
     .catch((err) => {
       console.log(err);
@@ -22,10 +19,14 @@ router.get('/', function(req, res, next) {
 
 router.post('/addProduct', function(req, res, next) {
   const productName = req.body.productName;
+  const description = req.body.description; // Get description from the request body
+  const price = req.body.price; // Get price from the request body
   const createDate = Date.now();
   
   var product = new Product({
     productName: productName,
+    description: description, // Add description field to the new product
+    price: price, // Add price field to the new product
     createDate: createDate
   });
   console.log(`Adding a new product ${productName} - createDate ${createDate}`);
