@@ -9,28 +9,28 @@ block content
       div(class='col-md-3')
         input(class="form-control form-control-sm" type="text" name='productName', placeholder="Enter new product name here" ) // Changed name attribute to productName
       div(class='col-md-2')
-        input(class="form-control form-control-sm" type="text" name='description', placeholder="Enter description" ) // Added input field for description
+        input(class="form-control form-control-sm" type="text" name='description', placeholder="Enter product description" ) // Added input for description
       div(class='col-md-2')
-        input(class="form-control form-control-sm" type="number" name='price', placeholder="Enter price" ) // Added input field for price
-      div(class='col-md-3 text-end')
+        input(class="form-control form-control-sm" type="text" name='price', placeholder="Enter product price" ) // Added input for price
+      div(class='col-md-2 text-end')
         button(class='btn btn-success btn-sm' type='submit') Add Product // Changed button text to Add Product
 
   h5(class='my-2') Current Products
 
   div(class='row mb-3 border-bottom border-3')
-    div(class='col-md-4 fw-bold') Product Name
-    div(class='col-md-2 fw-bold') Description
-    div(class='col-md-2 fw-bold') Price
+    div(class='col-md-3 fw-bold') Product Name // Added column for Product Name
+    div(class='col-md-3 fw-bold') Description // Added column for Description
+    div(class='col-md-2 fw-bold') Price // Added column for Price
     div(class='col-md-2 fw-bold') Added
     div(class='col-md-2 fw-bold') Action
 
   each product in currentProducts
     div(class='row mb-2')
-      div(class='col-sm-4') #{product.productName} // Changed taskName to productName
-      div(class='col-sm-2') #{product.description} // Added display for description
-      div(class='col-sm-2') #{product.price} // Added display for price
-      div(class='col-sm-2') #{format(product.createDate, "yyyy-MM-dd")}
-      div(class='col-sm-2')
+      div(class='col-md-3') #{product.productName} // Display Product Name
+      div(class='col-md-3') #{product.description} // Display Description
+      div(class='col-md-2') #{product.price} // Display Price
+      div(class='col-md-2') #{format(product.createDate, "yyyy-MM-dd")}
+      div(class='col-md-2')
         form(action='./deleteProduct' method='POST' class='form-registration') // Changed action to deleteProduct
           input(type='hidden' name='_id' value=`${product._id}`)
           button(class='btn btn-danger btn-sm mx-1') Delete // Changed button color to red
