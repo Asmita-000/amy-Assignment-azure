@@ -2,14 +2,14 @@ extends layout
 
 block content
 
-  form(action='./addProduct' method='POST' class='form-registration') // Change action to addProduct
+  form(action='./addProduct' method='POST' class='form-registration') // Changed action to addProduct
     div(class='row my-3')
-        div(class='col-md-2 align-bottom')
-          label(for="productName" class='fs-5') New Product // Change label to productName
-        div(class='col-md-8')
-          input(class="form-control form-control-sm" type="text" name='productName', placeholder="Enter new product name here" ) // Change name to productName
-        div(class='col-md-2 text-end')
-          button(class='btn btn-success btn-sm' type='submit') Add product
+      div(class='col-md-2 align-bottom')
+        label(for="productName" class='fs-5') New Product // Changed label text to New Product
+      div(class='col-md-8')
+        input(class="form-control form-control-sm" type="text" name='productName', placeholder="Enter new product name here" ) // Changed name attribute to productName
+      div(class='col-md-2 text-end')
+        button(class='btn btn-success btn-sm' type='submit') Add Product // Changed button text to Add Product
 
   h5(class='my-2') Current Products
 
@@ -18,11 +18,11 @@ block content
     div(class='col-md-2 fw-bold') Added
     div(class='col-md-4 fw-bold') Action
 
-  each product in currentProducts // Change task to product
+  each product in currentProducts
     div(class='row mb-2')
-      div(class='col-sm-6') #{product.productName} // Change taskName to productName
+      div(class='col-sm-6') #{product.productName} // Changed taskName to productName
       div(class='col-sm-2') #{format(product.createDate, "yyyy-MM-dd")}
-      div(class='col-sm-2')
-        form(action='./deleteProduct' method='POST' class='form-registration') // Change action to deleteProduct
-          input(type='hidden' name='_id' value=`${product._id}`) // Assuming product has _id field, adjust accordingly if not
-          button(class='btn btn-danger btn-sm mx-1') Delete
+      div(class='col-sm-4')
+        form(action='./deleteProduct' method='POST' class='form-registration') // Changed action to deleteProduct
+          input(type='hidden' name='_id' value=`${product._id}`)
+          button(class='btn btn-danger btn-sm mx-1') Delete // Changed button color to red
