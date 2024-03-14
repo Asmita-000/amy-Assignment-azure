@@ -63,7 +63,7 @@ label {
 }
 
 .btn.delete:hover {
-  background-color: #c82333; /* Darker red on hover for delete button */
+  background-color: #d40a1e; /* Darker red on hover for delete button */
 }
 
 .table {
