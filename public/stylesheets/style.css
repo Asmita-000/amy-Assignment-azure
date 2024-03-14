@@ -45,16 +45,25 @@ label {
 .btn {
   display: inline-block;
   padding: 10px 24px;
-  background-color: #ff6f61; /* Changed button color to red */
+  background-color: #007bff; /* Changed button color to blue */
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
   transition: background-color 0.3s;
-  border: none; /* Removed border */
+  border: 1px solid #007bff; /* Added border */
+}
+
+.btn.delete {
+  background-color: #dc3545; /* Changed delete button color to red */
+  border-color: #dc3545; /* Added border color for delete button */
 }
 
 .btn:hover {
-  background-color: #e0483e; /* Darker red on hover */
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn.delete:hover {
+  background-color: #c82333; /* Darker red on hover for delete button */
 }
 
 .table {
