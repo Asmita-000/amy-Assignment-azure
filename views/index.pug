@@ -2,28 +2,28 @@ extends layout
 
 block content
   //- Form for Adding Products
-form(action='./addTask' method='POST' class='form-registration')
-  .container.mt-5
-    .row.justify-content-center
-      .col-md-6.bg-light.p-4.rounded
-        h2.text-center.mb-4.text-primary Product Management System
-        .form-group
-          label(for="taskName" class='fw-bold text-secondary') Product Name
-          input.form-control(type="text", name='taskName', placeholder="Enter the new Product Name" )
-        .form-group
-          label(for="pID" class='fw-bold text-secondary') Product ID
-          input.form-control(type="text", name='pID', placeholder="Enter Product ID" )
-        .form-group
-          label(for="description" class='fw-bold text-secondary') Description
-          input.form-control(type="text", name='description', placeholder="Enter Product description" )
-        .form-group
-          label(for="price" class='fw-bold text-secondary') Price
-          input.form-control(type="text", name='price', placeholder="Enter product price" )
-        .form-group
-          label(for="category" class='fw-bold text-secondary') Category
-          input.form-control(type="text", name='category', placeholder="Enter Product Category" )
-        .text-center
-          button.btn.btn-primary.btn-block.btn-lg.mt-3(type='submit') Add Product
+  form(action='./addTask' method='POST' class='form-registration')
+    .container.mt-5
+      .row.justify-content-center
+        .col-md-6.bg-light.p-4.rounded
+          h2.text-center.mb-4.text-primary Product Management System
+          .form-group
+            label(for="taskName" class='fw-bold text-secondary') Product Name
+            input.form-control(type="text", name='taskName', placeholder="Enter the new Product Name" )
+          .form-group
+            label(for="pID" class='fw-bold text-secondary') Product ID
+            input.form-control(type="text", name='pID', placeholder="Enter Product ID" )
+          .form-group
+            label(for="description" class='fw-bold text-secondary') Description
+            input.form-control(type="text", name='description', placeholder="Enter Product description" )
+          .form-group
+            label(for="price" class='fw-bold text-secondary') Price
+            input.form-control(type="text", name='price', placeholder="Enter product price" )
+          .form-group
+            label(for="category" class='fw-bold text-secondary') Category
+            input.form-control(type="text", name='category', placeholder="Enter Product Category" )
+          .text-center
+            button.btn.btn-primary.btn-block.btn-lg.mt-3(type='submit') Add Product
 
 
   //- Listing all Products
