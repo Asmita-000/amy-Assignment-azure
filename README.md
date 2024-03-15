@@ -1,5 +1,24 @@
-# Express.js/MongoDB Azure sample app
+# Azure Web App with MongoDB Integration
 
-Sample application to demonstrate how to deploy an Node.js (Express.js) app using MongoDB to Azure.  
+## Overview:
 
-This repository is the sample code for the article [https://docs.microsoft.com/en-us/azure/app-service/tutorial-nodejs-mongodb-app](https://docs.microsoft.com/en-us/azure/app-service/tutorial-nodejs-mongodb-app).  The article covers how to create the appropriate resources and deploy your applciation to Azure.
+This project demonstrates integrating a Node.js web application with Azure App Service and Azure Cosmos DB for MongoDB on the Azure platform.
+Setup:
+
+    Create Azure resources.
+    Configure database connectivity.
+    Deploy the code via GitHub Actions.
+
+## Usage:
+
+Access the deployed web app, interact with its features, and monitor performance through Azure portal metrics.
+
+## Resources:
+
+    Azure Documentation
+    Node.js Documentation
+    MongoDB Documentation
+    GitHub Actions Documentation
+### Contributor
+    Asmita De
+    IIT Delhi
