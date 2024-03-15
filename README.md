@@ -19,6 +19,8 @@ Access the deployed web app, interact with its features, and monitor performance
     Node.js Documentation
     MongoDB Documentation
     GitHub Actions Documentation
+## URL for the App
+    http://amy-webapp.azurewebsites.net/
 ### Contributor
     Asmita De
     IIT Delhi
